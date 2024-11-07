@@ -1,0 +1,1 @@
+# в процессе, tailwind, ts, prisma, next, nest
