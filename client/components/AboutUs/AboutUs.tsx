@@ -2,7 +2,7 @@ export default function AboutUs(){
     return(
         <section className="w-full py-20 bg-[#f67b6f]">
             <div className="container mx-auto">
-                <div className="flex gap-x-6 text-white">
+                <div className="flex gap-x-6 text-white md:flex-col">
                     <div className="flex flex-col flex-1 gap-y-7">
                         <div className="text-2xl">about us</div>
                         <div className="text-5xl font-bold">
@@ -19,7 +19,7 @@ export default function AboutUs(){
                             From development of concept, business plan and project management plan, 
                             to marketing strategy and tactics, as well as the system of customer attraction via the Internet and sales system.
                         </div>
-                        <div className="flex gap-x-5">
+                        <div className="flex gap-5 md:flex-col ">
                             <div className="flex flex-col gap-y-4 items-center">
                                 <div className="text-7xl font-bold">
                                    50%
