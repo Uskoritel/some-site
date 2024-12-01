@@ -1,4 +1,3 @@
-'use client'
 import Paper from '../components/CreatePaper/Paper';
 import Travel from "../components/Travel/Travel";
 import Features from "@/components/Features/Features";
@@ -19,7 +18,7 @@ export default function Home() {
            and everything is perfect
         </h1>
       </div>
-      <span onClick={ () => alert("Helloy")} className='flex justify-center absolute mx-auto left-0 right-0 text-red-200 bottom-12 animate-pulse duration-100 ease-in'>Logo</span>      
+      <span className='flex justify-center absolute mx-auto left-0 right-0 text-red-200 bottom-12 animate-pulse duration-100 ease-in'>Logo</span>      
     </main>
     <Paper/>
     <Travel/>

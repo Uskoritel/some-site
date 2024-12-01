@@ -18,7 +18,7 @@ export class AuthService {
 			throw new HttpException('Пользователь с таким email существует', HttpStatus.BAD_REQUEST);
 		}
 		const user = await this.userService.createUser(data);
-		const payload = { sub: user.id, username: user.name }
+		const payload = { userId: user.id, username: user.name }
 		return {
 			access_token: await this.jwtService.signAsync(payload)
 		}
@@ -34,7 +34,7 @@ export class AuthService {
 			throw new UnauthorizedException();
 		}
 
-		const payload = { sub: user.id, username: user.name }
+		const payload = { userId: user.id, username: user.name }
 		return {
 			access_token: await this.jwtService.signAsync(payload)
 		}

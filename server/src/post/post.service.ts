@@ -19,22 +19,22 @@ export class PostService {
         comments: true
       }
     });
-  }
+  } 
 
-  async posts(params: {
-    skip?: number;
-    take?: number;
-    cursor?: Prisma.PostWhereUniqueInput;
-    where?: Prisma.PostWhereInput;
-    orderBy?: Prisma.PostOrderByWithRelationInput;
-  }): Promise<Post[]> {
-    const { skip, take, cursor, where, orderBy } = params;
+
+  async posts(): Promise<any[] | null> {
     return this.prisma.post.findMany({
-      skip,
-      take,
-      cursor,
-      where,
-      orderBy,
+      select : {
+        title: true,
+        content: true,
+        picture: true,
+        created_at : true,
+        _count: {
+          select: {
+            comments: true
+          }
+        }
+       }
     });
   }
 

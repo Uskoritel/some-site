@@ -10,7 +10,6 @@ export default function CommentsPaper({commentsData}){
      const [comments, setComments] = useState(commentsData ? commentsData : []); 
 
      const sendComm = async () => { 
-        
         const res = await fetch('http://localhost:5000/post/comment/', { 
             method: 'POST',
             headers: {
@@ -20,9 +19,7 @@ export default function CommentsPaper({commentsData}){
         })
       
          const comm = await res.json();   
-
         setComments([...comments, comm])
-
     }
 
     return(

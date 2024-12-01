@@ -1,34 +1,32 @@
-import CommentsPaper from "../../components/CommentsPapers/CommentsPaper";
+import CardPost from "@/components/Cards/CardPost";
 import { cookies } from "next/headers"
 
+interface Posts { 
+    title: string,
+    content: string,
+    picture: string,
+    created_at: string
+    _count: { comments: number}
+}
 
 export default async function Papers(){
     
     const cookieStore = await cookies();
     const token: any = cookieStore.get('access_token') ? cookieStore.get('access_token') : undefined
 
+    console.log(token);
 
-    const res = await fetch('http://localhost:5000/post/1', { 
+    const res = await fetch('http://localhost:5000/posts', { 
         cache: 'no-store',
         headers: {
             Authorization: 'Bearer ' + decodeURIComponent(token?.value)
         }
     })
-    const post = await res.json();
-
-    // console.log(post)
+    const posts: Posts[] = await res.json();
 
     return(
-        <section className="container mx-auto py-28">
-            <div className="border rounded-[35px] shadow-[5px_5px_20px_0_rgba(0,0,0,0.4)] p-20">
-                <div style={{'--image-url': `url(http://localhost:5000/${post.picture})`}} 
-                     className='bg-[image:var(--image-url)] h-[610px] bg-no-repeat m-auto rounded-[35px] bg-cover'>
-                </div>    
-                    <div className="mt-10">
-                        {post.content}
-                    </div> 
-                </div>
-           <CommentsPaper commentsData={post.comments}/>
+        <section className="container mx-auto py-28">                  
+                <CardPost posts={posts}/>            
         </section>
 
     )

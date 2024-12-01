@@ -29,6 +29,12 @@ export class PostController {
     return this.postService.post({ id: Number(id) });
   }
 
+  @Get('posts')
+  async getAllPosts(){
+      return this.postService.posts();
+    }
+
+
   // @UseGuards(AuthGuard)	
   @Post('createPost')
   @UseInterceptors(FileInterceptor('picture'))
